@@ -1,4 +1,4 @@
-mod aoc01;
+pub mod aoc01;
 
 #[cfg(test)]
 mod tests {
