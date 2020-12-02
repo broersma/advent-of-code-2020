@@ -40,9 +40,16 @@ fn part1(input : &Vec<PolicyPassword>) {
 }
 
 fn part2(input : &Vec<PolicyPassword>) {
+    let mut num_valid = 0;
     for x in input {
-        println!("{:?}", x);
+        let char1 = x.password.chars().nth(x.min - 1).unwrap().to_string();
+        let char2 = x.password.chars().nth(x.max - 1).unwrap().to_string();
+        if (char1 == x.letter && char2 != x.letter)
+        || (char1 != x.letter && char2 == x.letter) {
+            num_valid += 1;
+        }
     }
+    println!("{}", num_valid);
 }
 
 pub fn main() {
@@ -1048,5 +1055,5 @@ pub fn main() {
     6-7 c: xkdzcscg".split("\n").map(|x| x.trim()).map(|x| x.parse::<PolicyPassword>().unwrap()).collect();
 
     part1(&input);
-    //part2(&input);
+    part2(&input);
 }
