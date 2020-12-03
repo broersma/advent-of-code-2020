@@ -52,7 +52,8 @@ fn part2(input : &Vec<PolicyPassword>) {
     println!("{}", num_valid);
 }
 
-pub fn main() {
+#[test]
+fn aoc02() {
     let input: Vec<PolicyPassword> = "5-6 s: zssmssbsms
     3-6 j: jjjjjrrj
     4-7 k: kfkgkkkkk

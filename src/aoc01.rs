@@ -20,7 +20,8 @@ fn part2(input : &Vec<i32>) {
     }
 }
 
-pub fn main() {
+#[test]
+fn aoc01() {
     let input: Vec<i32> = "1810
     1729
     1857
