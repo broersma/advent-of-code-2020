@@ -1,19 +1,25 @@
+use ::function_name::named;
+
+#[named]
 fn part1(input : &Vec<i32>) {
     for x in input {
         for y in input {
             if x+y == 2020 {
-                println!("{}*{}={}", x, y, x*y);
+                println!("{}::{} {:?}", module_path!(), function_name!(),  x*y);
+                return;
             }
         }
     }
 }
 
+#[named]
 fn part2(input : &Vec<i32>) {
     for x in input {
         for y in input {
             for z in input {
                 if x+y+z == 2020 {
-                    println!("{}*{}*{}={}", x, y, z, x*y*z);
+                    println!("{}::{} {:?}", module_path!(), function_name!(), x*y*z);
+                    return;
                 }
             }
         }

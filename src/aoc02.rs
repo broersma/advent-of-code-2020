@@ -1,5 +1,6 @@
 use std::str::FromStr;
 use regex::Regex;
+use ::function_name::named;
 
 #[derive(Debug, PartialEq)]
 struct PolicyPassword {
@@ -28,6 +29,7 @@ impl FromStr for PolicyPassword {
     }
 }
 
+#[named]
 fn part1(input : &Vec<PolicyPassword>) {
     let mut num_valid = 0;
     for x in input {
@@ -36,9 +38,10 @@ fn part1(input : &Vec<PolicyPassword>) {
             num_valid += 1;
         }
     }
-    println!("{}", num_valid);
+    println!("{}::{} {:?}", module_path!(), function_name!(), num_valid);
 }
 
+#[named]
 fn part2(input : &Vec<PolicyPassword>) {
     let mut num_valid = 0;
     for x in input {
@@ -49,7 +52,7 @@ fn part2(input : &Vec<PolicyPassword>) {
             num_valid += 1;
         }
     }
-    println!("{}", num_valid);
+    println!("{}::{} {:?}", module_path!(), function_name!(), num_valid);
 }
 
 #[test]

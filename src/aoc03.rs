@@ -1,5 +1,6 @@
 use std::str::FromStr;
 use regex::Regex;
+use ::function_name::named;
 
 #[derive(Debug, PartialEq)]
 struct InputLine {
@@ -28,6 +29,7 @@ impl FromStr for InputLine {
     }
 }
 
+#[named]
 fn part1(input : &Vec<String>) {
     let delta = (3,1);
     let mut pos = delta;
@@ -41,9 +43,10 @@ fn part1(input : &Vec<String>) {
         pos.0 += delta.0;
         pos.1 += delta.1;
     }    
-    println!("{:?}", tree_count);
+    println!("{}::{} {:?}", module_path!(), function_name!(), tree_count);
 }
 
+#[named]
 fn part2(input : &Vec<String>) {
     let deltas = vec![(1,1), (3,1), (5,1), (7,1), (1,2)];
 
@@ -62,7 +65,7 @@ fn part2(input : &Vec<String>) {
         }
         multiplied_tree_count *= tree_count;
     }
-    println!("{:?}", multiplied_tree_count);
+    println!("{}::{} {:?}", module_path!(), function_name!(), multiplied_tree_count);
 }
 
 #[test]
