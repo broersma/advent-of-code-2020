@@ -1,33 +1,4 @@
-use std::str::FromStr;
-use regex::Regex;
 use ::function_name::named;
-
-#[derive(Debug, PartialEq)]
-struct InputLine {
-    min: usize,
-    max: usize,
-    letter: String,
-    password: String,
-}
-
-impl FromStr for InputLine {
-    type Err = String;
-
-    fn from_str(policy_password_str: &str) -> Result<Self,Self::Err> {
-        let re = Regex::new(
-            r"(\d+)\-(\d+) ([a-z]): ([a-z]+)",
-        ).unwrap();
-    
-        re.captures(policy_password_str).and_then(|cap| {
-            Some(InputLine {
-                min: cap.get(1).unwrap().as_str().parse::<usize>().unwrap(),
-                max: cap.get(2).unwrap().as_str().parse::<usize>().unwrap(),
-                letter: cap.get(3).unwrap().as_str().to_string(),
-                password: cap.get(4).unwrap().as_str().to_string()
-            })
-        }).ok_or("Not good.".to_string())
-    }
-}
 
 #[named]
 fn part1(input : &Vec<String>) {
